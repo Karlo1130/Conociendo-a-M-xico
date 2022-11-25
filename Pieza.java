@@ -1,4 +1,5 @@
 	
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -16,6 +17,7 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener 
     private Point start_drag;
     private Point start_loc;
     private Point final_location;
+    private boolean correcta = false;
 
     /**
  * Constructor de clase
@@ -32,6 +34,8 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener 
         this.setPreferredSize(d);
         this.setSize(d); 
         this.setLocation( location );
+        final_location = location;
+        
         //Listener
         this.addMouseListener(this);
         this.addMouseMotionListener(this);        
@@ -50,13 +54,15 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener 
     @Override
     public void mouseReleased(MouseEvent e) {
     	
-    	System.out.println(final_location);
-    	
     	if(final_location.getX() >= 0 && final_location.getX() <= 100 &&
     			final_location.getY() >= 0 && final_location.getY() <= 100) {
-    		System.out.println("Estas in");
+    		//System.out.println("Estas in");
     		this.setLocation(0, 0);
+    		//this.add(new PanelInfo()).setBackground(Color.blue);
+    		correcta = true;
     	}
+    	else
+    		correcta = false;
     }
 
     @Override
@@ -96,5 +102,9 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener 
             (int) (target_location.getY() + cursor.getY()));//se suman ambos valores para obtener la posicion de la pieza
         													//con respecto a la pantallas
     }
-
+    
+    public boolean getCorrecta() {
+    	return correcta;
+    }
+    
 }//--> end class

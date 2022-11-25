@@ -1,32 +1,37 @@
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.Random;
-import javax.swing.JPanel;
+
+import javax.swing.*;
 
 //import org.netbeans.lib.awtextra.AbsoluteLayout;
 /**
  * 
  * @author Mouse
  */
-public class Tablero extends JPanel{
+public class Tablero extends JPanel implements ActionListener{
 
     private int fila = 3;
     private int columna = 3;
-    Pieza [][] matriz = new Pieza[fila][columna];        
+    Pieza [][] matriz = new Pieza[fila][columna];   
+    PanelInfo[][] info = new PanelInfo[fila][columna];
+    Timer timer;
 
     /** 
  * COnstructor de clase
  */
     public Tablero(){
 
-        Dimension dt = new Dimension(500,450);
+        Dimension dt = new Dimension(1000,800);
         this.setPreferredSize(dt);
         this.setSize(dt);
         this.setVisible(true);
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(Color.red));        
+        this.setBackground(Color.white);
+        
+        //info = new PanelInfo();
+        
+        //this.add(info);
 
         //Se añaden las piezas al tablero
         int p = 1;
@@ -43,8 +48,38 @@ public class Tablero extends JPanel{
                 p++;
             }
         }
+
         //se asigna Layout
         this.setLayout(new BorderLayout());
+        
+        timer = new Timer(1, this);
+        timer.start();
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		for( int i=0 ; i< fila; i++)
+        {
+            for( int j=0 ; j<columna; j++)
+            {
+                if(matriz[i][j].getCorrecta()) {
+                	info[i][j] = new PanelInfo();
+                	this.add(info[i][j], BorderLayout.CENTER);
+                	//this.remove(matriz[i][j]); //esto funciona pero aun ocupo saber como quitar el panel asi que lo  comento por mientras jeje
+                	this.repaint();
+                }
+                else if(info[i][j] != null && !matriz[i][j].getCorrecta()) {//no sirve como quiero lo de dentro
+                	/*this.remove(info[i][j]);
+                	this.revalidate();
+                	this.repaint();*/
+                	System.out.println("lele");
+                	this.removeAll();
+                	this.add(new Tablero());
+                	this.revalidate();
+                	this.repaint();
+                }
+            }
+        }
+	}
 
 }//--> end class
