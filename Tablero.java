@@ -15,7 +15,7 @@ public class Tablero extends JPanel implements ActionListener{
     private int fila = 3;
     private int columna = 3;
     Pieza [][] matriz = new Pieza[fila][columna];   
-    PanelInfo[][] info = new PanelInfo[fila][columna];
+    JPanel[][] info = new JPanel[fila][columna];
     Timer timer;
 
     /** 
@@ -63,18 +63,20 @@ public class Tablero extends JPanel implements ActionListener{
             for( int j=0 ; j<columna; j++)
             {
                 if(matriz[i][j].getCorrecta()) {
-                	info[i][j] = new PanelInfo();
+                	info[i][j] = new JPanel();
+                	info[i][j].setBounds(100, 100, 100, 100);
+                	info[i][j].setBackground(Color.black);
+                	info[i][j].setVisible(true);
                 	this.add(info[i][j], BorderLayout.CENTER);
                 	//this.remove(matriz[i][j]); //esto funciona pero aun ocupo saber como quitar el panel asi que lo  comento por mientras jeje
                 	this.repaint();
+                	//this.revalidate();
                 }
                 else if(info[i][j] != null && !matriz[i][j].getCorrecta()) {//no sirve como quiero lo de dentro
-                	/*this.remove(info[i][j]);
-                	this.revalidate();
-                	this.repaint();*/
+                	//this.remove(info[i][j]);
                 	System.out.println("lele");
                 	this.removeAll();
-                	this.add(new Tablero());
+                	//System.out.println(this);	
                 	this.revalidate();
                 	this.repaint();
                 }
