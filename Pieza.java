@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  * @web https://www.jc-mouse.net/
  * @author Mouse
  */
-public class Pieza extends JLabel implements MouseListener, MouseMotionListener {
+public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
 
     //para el movimiento de la pieza
     private Point start_drag;
@@ -55,7 +55,7 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener 
     public void mouseReleased(MouseEvent e) {
     	
     	if(final_location.getX() >= 0 && final_location.getX() <= 100 &&
-    			final_location.getY() >= 0 && final_location.getY() <= 100) {
+    		final_location.getY() >= 0 && final_location.getY() <= 100) {
     		//System.out.println("Estas in");
     		this.setLocation(0, 0);
     		//this.add(new PanelInfo()).setBackground(Color.blue);
@@ -84,6 +84,16 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener 
         
         this.setLocation(new_location);    
         this.repaint();
+        
+        if(final_location.getX() >= 0 && final_location.getX() <= 100 &&
+        		final_location.getY() >= 0 && final_location.getY() <= 100) {
+        		//System.out.println("Estas in");
+        		//this.setLocation(0, 0);
+        		//this.add(new PanelInfo()).setBackground(Color.blue);
+        		correcta = true;
+        	}
+        	else
+        		correcta = false;
     }
 
     @Override

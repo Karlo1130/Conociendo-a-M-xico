@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
@@ -13,4 +14,14 @@ public class PanelInfo extends JPanel{
 		this.setBackground(Color.black);
 		this.setVisible(true);
 	}
+	/*
+	public void keyPressed(KeyEvent e) {
+
+	    int key = e.getKeyCode();
+
+	    if(key == KeyEvent.VK_D){
+
+	        System.out.println("lol");
+	    }
+	}*/
 }
