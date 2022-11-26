@@ -1,42 +1,48 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Random;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
-public class PanelInfo extends JPanel implements MouseListener{
 
+
+public class PanelInfo extends JLabel implements MouseListener{
+
+	private boolean cerrar=false;
+	
 	public PanelInfo() { //panel de informacion
 		//this.setPreferredSize(new Dimension(200, 200));
 		this.setBounds(100, 100, 100, 100);
 		this.setBackground(Color.black);
-		this.setVisible(true);
+		this.setOpaque(true);
+		this.setVisible(false);
+		
+		
+		this.addMouseListener(this);
 	}
-	/*
-	public void keyPressed(KeyEvent e) {
-
-	    int key = e.getKeyCode();
-
-	    if(key == KeyEvent.VK_D){
-
-	        System.out.println("lol");
-	    }
-	}*/
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		//System.out.println("lol");
+		/*this.setOpaque(false);
+		//this.setVisible(false);
+		this.removeAll();
+        //this.revalidate();
+        this.repaint();*/
+		//cerrar = true;
+		//this.removeAll();
+		
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		//System.out.println("lil");
+		//cerrar = true;
 		
+		cerrar=true;
 	}
 
 	@Override
@@ -56,4 +62,9 @@ public class PanelInfo extends JPanel implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public boolean getCerrar() {
+		return cerrar;
+	}
+	
 }

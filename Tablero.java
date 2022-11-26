@@ -16,7 +16,8 @@ public class Tablero extends JPanel implements MouseListener{
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
     Timer timer;
-
+    int prueba;
+    int l=0;
     /** 
  * COnstructor de clase
  */
@@ -42,46 +43,39 @@ public class Tablero extends JPanel implements MouseListener{
                 int x = 50 + ( new Random()).nextInt(400-10);
                 int y = 50 + ( new Random()).nextInt(300-10);                
                 Point location = new Point(x,y);
-                piezas[i] = new Pieza( p , location );
+                piezas[i] = new Pieza( 1 , location );
                 piezas[i].addMouseListener(this);
                 this.add( piezas[i] );
                 p++;
+                
+                info[i] = new PanelInfo();
+            	info[i].addMouseListener(this);
+            	this.add(info[i]);
         }
 
         //se asigna Layout
         this.setLayout(new BorderLayout());
 
-        //timer = new Timer(1000, this);
-        //timer.start();
-        
         
     }
-    	/*
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		for( int i=0 ; i< numPiezas; i++)
-        {
-            if(piezas[i].getCorrecta()) {
-            	info[i] = new PanelInfo();
-            	this.add(info[i]);
-            	//this.remove(piezas[i]); //esto funciona pero aun ocupo saber como quitar el panel asi que lo  comento por mientras jeje
-            	this.repaint();
-                
-            }
-            if(info[i] != null && !piezas[i].getCorrecta()) {//no sirve como quiero lo de dentro
-                System.out.println("lele");
-                this.remove(info[i]);
-                this.revalidate();
-                this.repaint();
-            } 
-        }
-	}
-		*/
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		for (int i = 0; i < numPiezas; i++) {
+			if(info[i].getCerrar()) {
+				System.out.println(l++);
+				this.remove(info[i]);
+				this.revalidate();
+            	this.repaint();
+			}
+		}
+		/*
+		System.out.println(prueba);
+		this.remove(info[prueba]);
+		this.revalidate();
+    	this.repaint();
+    	*/
 	}
 
 	@Override
@@ -96,20 +90,21 @@ public class Tablero extends JPanel implements MouseListener{
 		for( int i=0 ; i< numPiezas; i++)
         {
             if(piezas[i].getCorrecta()) {
-            	info[i] = new PanelInfo();
-            	this.add(info[i]);
-            	this.remove(piezas[i]); //esto funciona pero aun ocupo saber como quitar el panel asi que lo  comento por mientras jeje
+            	prueba = i;
+            	
+            	info[i].setVisible(true);
+            	
+            	this.remove(piezas[i]);
             	this.repaint();
                 
-            }
+            }/*
             if(info[i] != null && !piezas[i].getCorrecta()) {
                 System.out.println("lele");
                 this.remove(info[i]);
-                //this.revalidate();
+                this.revalidate();
                 this.repaint();
-            } 
+            } */
         }
-		System.out.println("lol");
 	}
 
 	@Override
