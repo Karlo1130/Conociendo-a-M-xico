@@ -84,7 +84,7 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
         
         this.setLocation(new_location);    
         this.repaint();
-        
+        /*
         if(final_location.getX() >= 0 && final_location.getX() <= 100 &&
         		final_location.getY() >= 0 && final_location.getY() <= 100) {
         		//System.out.println("Estas in");
@@ -93,7 +93,7 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
         		correcta = true;
         	}
         	else
-        		correcta = false;
+        		correcta = false;*/
     }
 
     @Override

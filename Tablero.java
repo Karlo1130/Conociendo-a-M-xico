@@ -27,11 +27,13 @@ public class Tablero extends JPanel implements MouseListener{
         this.setSize(dt);
         this.setVisible(true);
         this.setBackground(Color.white);
-        this.addMouseListener(this);
+        //this.addMouseListener(this);
         //info = new PanelInfo();
         
         //this.add(info);
 
+        //MouseListener mouse = new MouseListener();
+        
         //Se añaden las piezas al tablero
         int p = 1;
         for( int i=0 ; i< numPiezas; i++)
@@ -41,7 +43,7 @@ public class Tablero extends JPanel implements MouseListener{
                 int y = 50 + ( new Random()).nextInt(300-10);                
                 Point location = new Point(x,y);
                 piezas[i] = new Pieza( p , location );
-                piezas[i].addMouseListener(piezas[i]);
+                piezas[i].addMouseListener(this);
                 this.add( piezas[i] );
                 p++;
         }
@@ -96,11 +98,11 @@ public class Tablero extends JPanel implements MouseListener{
             if(piezas[i].getCorrecta()) {
             	info[i] = new PanelInfo();
             	this.add(info[i]);
-            	//this.remove(piezas[i]); //esto funciona pero aun ocupo saber como quitar el panel asi que lo  comento por mientras jeje
+            	this.remove(piezas[i]); //esto funciona pero aun ocupo saber como quitar el panel asi que lo  comento por mientras jeje
             	this.repaint();
                 
             }
-            if(info[i] != null && !piezas[i].getCorrecta()) {//no sirve como quiero lo de dentro
+            if(info[i] != null && !piezas[i].getCorrecta()) {
                 System.out.println("lele");
                 this.remove(info[i]);
                 //this.revalidate();
