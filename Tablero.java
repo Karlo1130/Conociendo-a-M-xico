@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 public class Tablero extends JPanel implements MouseListener{
 
-    private int numPiezas = 1;
+    private int numPiezas = 8;
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
     mapa mexico;

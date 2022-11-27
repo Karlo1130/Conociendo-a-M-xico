@@ -3,6 +3,8 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import java.io.File;
+
 public class PanelInfo extends JPanel implements MouseListener{
 
 	private Point cursorLocation;
@@ -13,10 +15,17 @@ public class PanelInfo extends JPanel implements MouseListener{
 	JLabel imagen;
 	JLabel rojo;
 	JLabel[] verde = new JLabel[2];
+	private int numArchivos;
 	private int numPanel;
 	private int numImagen=1;
 	
 	public PanelInfo(int numPanel) { //panel de informacion
+
+		File carpeta = new File("src/"+numPanel);
+		File[] lista = carpeta.listFiles();
+		numArchivos = lista.length;
+		
+		//System.out.println(carpeta.list());
 
 		this.numPanel = numPanel;
 		
@@ -105,6 +114,10 @@ public class PanelInfo extends JPanel implements MouseListener{
 
 	public void aumentarDerecha() {
 		numImagen++;
+		
+		if(numImagen > numArchivos)
+			numImagen = 1;
+		
 		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".png"));
 		imagen.setIcon(icon);
 		derecha = false;
@@ -112,6 +125,11 @@ public class PanelInfo extends JPanel implements MouseListener{
 	
 	public void aumentarIzquierda() {
 		numImagen--;
+		
+		if(numImagen < 1)
+			numImagen = numArchivos;
+		
+		
 		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".png"));
 		imagen.setIcon(icon);
 		izquierda = false;
