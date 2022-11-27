@@ -12,12 +12,10 @@ import javax.swing.*;
  */
 public class Tablero extends JPanel implements MouseListener{
 
-    private int numPiezas = 9;
+    private int numPiezas = 1;
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
-    Timer timer;
-    int prueba;
-    int l=0;
+    mapa mexico;
     /** 
  * COnstructor de clase
  */
@@ -28,35 +26,37 @@ public class Tablero extends JPanel implements MouseListener{
         this.setSize(dt);
         this.setVisible(true);
         this.setBackground(Color.white);
-        //this.addMouseListener(this);
-        //info = new PanelInfo();
-        
-        //this.add(info);
 
-        //MouseListener mouse = new MouseListener();
-        
         //Se añaden las piezas al tablero
-        int p = 1;
+        
         for( int i=0 ; i< numPiezas; i++)
         {
                 //coordenas aleatorias de pieza
-                int x = 50 + ( new Random()).nextInt(400-10);
-                int y = 50 + ( new Random()).nextInt(300-10);                
-                Point location = new Point(x,y);
-                piezas[i] = new Pieza( 1 , location );
-                piezas[i].addMouseListener(this);
-                this.add( piezas[i] );
-                p++;
+                int x = new Random().nextInt(899+1)+1;
+                int y = new Random().nextInt(699+1)+1;
                 
-                info[i] = new PanelInfo();
-            	info[i].addMouseListener(this);
+                while(x >= 150 && x<800)
+                	x =new Random().nextInt(899+1)+1;
+                
+                while(y >= 150 && y<600)
+                	y =new Random().nextInt(699+1)+1;
+                
+                Point location = new Point(x,y);
+                piezas[i] = new Pieza( i+1 , location );
+                piezas[i].addMouseListener(this);//agrega un listener a las piezas
+                this.add(piezas[i]);
+                
+                
+                info[i] = new PanelInfo(i);
+            	info[i].addMouseListener(this);//agrega un listener a las etiquetas
             	this.add(info[i]);
         }
+        
+        mexico = new mapa();
+        this.add(mexico);
 
         //se asigna Layout
-        this.setLayout(new BorderLayout());
-
-        
+        this.setLayout(new BorderLayout());        
     }
 
 	@Override
@@ -64,18 +64,17 @@ public class Tablero extends JPanel implements MouseListener{
 		// TODO Auto-generated method stub
 		for (int i = 0; i < numPiezas; i++) {
 			if(info[i].getCerrar()) {
-				System.out.println(l++);
-				this.remove(info[i]);
-				this.revalidate();
-            	this.repaint();
+				this.remove(info[i]);//quita la etiqueta cuando clikas en ella
+				this.revalidate();//refresca la ventana
+            	this.repaint();//repinta
+			}
+			if(info[i].getDerecha()) {
+				info[i].aumentarDerecha();
+			}
+			if(info[i].getIzquierda()) {
+				info[i].aumentarIzquierda();
 			}
 		}
-		/*
-		System.out.println(prueba);
-		this.remove(info[prueba]);
-		this.revalidate();
-    	this.repaint();
-    	*/
 	}
 
 	@Override
@@ -90,20 +89,11 @@ public class Tablero extends JPanel implements MouseListener{
 		for( int i=0 ; i< numPiezas; i++)
         {
             if(piezas[i].getCorrecta()) {
-            	prueba = i;
-            	
-            	info[i].setVisible(true);
-            	
-            	this.remove(piezas[i]);
-            	this.repaint();
+            	info[i].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
+            	this.remove(piezas[i]);//borra la pieza
+            	this.repaint();//repinta
                 
-            }/*
-            if(info[i] != null && !piezas[i].getCorrecta()) {
-                System.out.println("lele");
-                this.remove(info[i]);
-                this.revalidate();
-                this.repaint();
-            } */
+            }
         }
 	}
 

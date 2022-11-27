@@ -54,8 +54,8 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
     @Override
     public void mouseReleased(MouseEvent e) {
     	
-    	if(final_location.getX() >= 0 && final_location.getX() <= 100 &&
-    		final_location.getY() >= 0 && final_location.getY() <= 100) {
+    	if(final_location.getX() >= 200 && final_location.getX() <= 800 &&
+    		final_location.getY() >= 200 && final_location.getY() <= 600) {
     		//System.out.println("Estas in");
     		this.setLocation(0, 0);
     		//this.add(new PanelInfo()).setBackground(Color.blue);
