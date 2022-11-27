@@ -13,9 +13,11 @@ import javax.swing.*;
 public class Tablero extends JPanel implements MouseListener{
 
     private int numPiezas = 8;
+    private int piezasCorrectas = 0;
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
     mapa mexico;
+    
     /** 
  * COnstructor de clase
  */
@@ -64,9 +66,11 @@ public class Tablero extends JPanel implements MouseListener{
 		// TODO Auto-generated method stub
 		for (int i = 0; i < numPiezas; i++) {
 			if(info[i].getCerrar()) {
+				info[i].setCerrar(false);
 				this.remove(info[i]);//quita la etiqueta cuando clikas en ella
 				this.revalidate();//refresca la ventana
             	this.repaint();//repinta
+            	piezasCorrectas++;
 			}
 			if(info[i].getDerecha()) {
 				info[i].aumentarDerecha();
@@ -75,6 +79,10 @@ public class Tablero extends JPanel implements MouseListener{
 				info[i].aumentarIzquierda();
 			}
 		}
+		
+		if(piezasCorrectas == 8)
+            		System.out.println("ganaste");
+		
 	}
 
 	@Override
@@ -86,13 +94,13 @@ public class Tablero extends JPanel implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
 		for( int i=0 ; i< numPiezas; i++)
         {
             if(piezas[i].getCorrecta()) {
             	info[i].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
             	this.remove(piezas[i]);//borra la pieza
             	this.repaint();//repinta
-                
             }
         }
 	}

@@ -23,9 +23,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 
 		File carpeta = new File("src/"+numPanel);
 		File[] lista = carpeta.listFiles();
-		numArchivos = lista.length;
-		
-		//System.out.println(carpeta.list());
+		numArchivos = lista.length;//guarda el numero de archivos de la carpeta
 
 		this.numPanel = numPanel;
 		
@@ -63,17 +61,15 @@ public class PanelInfo extends JPanel implements MouseListener{
 		if(cursorLocation.getX() >= 150 && cursorLocation.getX() <= 200 &&
 				cursorLocation.getY() >= 0 && cursorLocation.getY() <= 50) {
 			cerrar=true;//cambia el estado cuando se presiona
-		}
+		}//Boton cerrar "X"
 		if(cursorLocation.getX() >= 150 && cursorLocation.getX() <= 200 &&
 				cursorLocation.getY() > 50 && cursorLocation.getY() <= 150) {
-			System.out.println("der");
 			derecha=true;//cambia el estado cuando se presiona
-		}
+		}//Boton derecho
 		if(cursorLocation.getX() >= 0 && cursorLocation.getX() <= 50 &&
 				cursorLocation.getY() > 50 && cursorLocation.getY() <= 150) {
-			System.out.println("izq");
 			izquierda=true;//cambia el estado cuando se presiona
-		}
+		}//Boton izquierdo
 		
 	}
 
@@ -102,6 +98,10 @@ public class PanelInfo extends JPanel implements MouseListener{
 	
 	public boolean getCerrar() {
 		return cerrar;
+	}
+	
+	public void setCerrar(boolean cerrar) {
+		this.cerrar = cerrar;
 	}
 	
 	public boolean getDerecha() {
