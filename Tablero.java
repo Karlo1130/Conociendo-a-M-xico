@@ -80,7 +80,7 @@ public class Tablero extends JPanel implements MouseListener{
 			}
 		}
 		
-		if(piezasCorrectas == 8)
+		if(piezasCorrectas == numPiezas)
             		System.out.println("ganaste");
 		
 	}

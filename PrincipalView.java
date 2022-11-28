@@ -6,7 +6,7 @@
 public class PrincipalView extends javax.swing.JFrame {
 
     //instancia de tablero
-    private Tablero tablero = new Tablero();
+    private menu tablero = new menu();
 
     /**
  * Creates new form principal
