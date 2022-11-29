@@ -15,6 +15,8 @@ public class PanelInfo extends JPanel implements MouseListener{
 	JLabel imagen;
 	JLabel rojo;
 	JLabel[] verde = new JLabel[2];
+	JLabel nomEstado;
+	JLabel info;
 	private int numArchivos;
 	private int numPanel;
 	private int numImagen=1;
@@ -40,8 +42,22 @@ public class PanelInfo extends JPanel implements MouseListener{
 		rojo.setOpaque(true);
 		
 		this.add(rojo);
+		
+		nomEstado = new JLabel(""+numPanel);
+		nomEstado.setBounds(50, 0, 100, 50);
+		nomEstado.setBackground(Color.pink);
+		nomEstado.setOpaque(true);
+		
+		this.add(nomEstado);
 
-		cambiarImagen();
+		info = new JLabel("aqui va informacion jeje");
+		info.setBounds(50, 150, 100, 50);
+		info.setBackground(Color.orange);
+		info.setOpaque(true);
+		
+		this.add(info);
+		
+		panelesImagen();
 		
 		setLayout(new BorderLayout());
 	}
@@ -135,13 +151,13 @@ public class PanelInfo extends JPanel implements MouseListener{
 		izquierda = false;
 	}
 	
-	public void cambiarImagen() {
-		verde[0] = new JLabel();
+	public void panelesImagen() {
+		verde[0] = new JLabel(">");
 		verde[0].setBounds(150, 50, 50, 100);
 		verde[0].setBackground(Color.green);
 		verde[0].setOpaque(true);
 		
-		verde[1] = new JLabel();
+		verde[1] = new JLabel("<");
 		verde[1].setBounds(0, 50, 50, 100);
 		verde[1].setBackground(Color.green);
 		verde[1].setOpaque(true);

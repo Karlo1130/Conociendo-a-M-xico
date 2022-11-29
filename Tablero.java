@@ -14,7 +14,7 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 
 	private String jugador;
 	private String estado;
-    private int numPiezas = 1	;
+    private int numPiezas = 1;
     private int piezasCorrectas = 0;
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
@@ -84,6 +84,8 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 				this.revalidate();//refresca la ventana
             	this.repaint();//repinta
             	piezasCorrectas++;
+            	
+            	victoria.setAciertos(piezasCorrectas);
 			}
 			if(info[i].getDerecha()) {
 				info[i].aumentarDerecha();
@@ -135,7 +137,10 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
             	info[i].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
             	this.remove(piezas[i]);//borra la pieza
             	this.repaint();//repinta
+            	
             }
+            else
+            	victoria.aumentarIntentos();
         }
 	}
 

@@ -47,6 +47,7 @@ public class menu extends JPanel implements ActionListener{
 		seleccionEstado = new JComboBox(estados);
 		seleccionEstado.setBounds(200, 400, 600, 56);
 		seleccionEstado.setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
+		seleccionEstado.setMaximumRowCount(6);
 		seleccionEstado.setEnabled(false);
 		seleccionEstado.setVisible(true);
 		seleccionEstado.addActionListener(this);
@@ -55,8 +56,7 @@ public class menu extends JPanel implements ActionListener{
 		boton = new JButton("Empezar");
 		boton.setBounds(200, 500, 600, 56);
 		boton.setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
-		boton.setEnabled(false);
-		boton.setVisible(true);
+		boton.setVisible(false);
 		boton.addActionListener(this);
 		this.add(boton);
 		
@@ -79,12 +79,15 @@ public class menu extends JPanel implements ActionListener{
 			
 			if(seleccionEstado.getSelectedIndex() != 0) {
 				estado = (String) seleccionEstado.getSelectedItem();
-				boton.setEnabled(true);
+
+				boton.setVisible(true);
 				
 				System.out.println(estado);
 			}
-			else
-				boton.setEnabled(false);
+			else {
+
+				boton.setVisible(false);
+			}
 		}
 		
 		if(e.getSource() ==  boton) {

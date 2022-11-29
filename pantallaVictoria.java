@@ -3,16 +3,20 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class pantallaVictoria extends JPanel implements ActionListener{
+public class pantallaVictoria extends JPanel{
 
 	private String jugador;
 	private String estado;
+	
+	private int aciertos=0;
+	private int intentos=0;
 	
 	private boolean reiniciar=false;
 	private boolean salir=false;
 	
 	JLabel conffeti;
 	JLabel felicitacion;
+	JLabel[] movimientos = new JLabel[2];
 	
 	JButton[] salida = new JButton[2];
 	
@@ -37,61 +41,55 @@ public class pantallaVictoria extends JPanel implements ActionListener{
 		ImageIcon icon = new ImageIcon( getClass().getResource("img/blue.png"));
 		felicitacion.setIcon(icon);
 		
-		felicitacion.setText("Buen trabajo, "+jugador+"\n de "+estado);
+		felicitacion.setText("<html>Buen trabajo, "+jugador+"<p>de "+estado+"<html>");
 		
-		felicitacion.setBounds(50, 50, icon.getIconWidth(), icon.getIconHeight());
+		felicitacion.setBounds(50, 25, icon.getIconWidth(), icon.getIconHeight());
 		felicitacion.setFont(new Font("Comic Sans MS", Font.PLAIN, 28));
 		felicitacion.setHorizontalTextPosition(JLabel.CENTER);
 		felicitacion.setOpaque(true);
 		this.add(felicitacion);
 		
+		movimientos[0] = new JLabel("Aciertos: "+aciertos);
+		movimientos[0].setBounds(50, 250, 280, 56);
+		movimientos[0].setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
+		movimientos[0].setBackground(Color.green);
+		movimientos[0].setOpaque(true);
+		movimientos[0].setVisible(true);
+
+		this.add(movimientos[0]);
+		
+		movimientos[1] = new JLabel("Intentos: "+intentos);
+		movimientos[1].setBounds(370, 250, 280, 56);
+		movimientos[1].setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
+		movimientos[1].setBackground(Color.red);
+		movimientos[1].setOpaque(true);
+		movimientos[1].setVisible(true);
+
+		this.add(movimientos[1]);
+		
 		salida[0] = new JButton("Reiniciar partida");
-		salida[0].setBounds(50, 300, 280, 56);
+		salida[0].setBounds(50, 325, 280, 56);
 		salida[0].setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
 		salida[0].setVisible(true);
-		salida[0].addActionListener(this);
 		this.add(salida[0]);
 		
 		salida[1] = new JButton("Salir");
-		salida[1].setBounds(370, 300, 280, 56);
+		salida[1].setBounds(370, 325, 280, 56);
 		salida[1].setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
 		salida[1].setVisible(true);
-		salida[1].addActionListener(this);
 		this.add(salida[1]);
 		
 		setLayout(new BorderLayout());
 	}
+	
+	public void setAciertos(int aciertos) {
+		this.aciertos = aciertos;
+		movimientos[0].setText("Aciertos: "+aciertos);
+	}
+	
+	public void aumentarIntentos() {
+		intentos++;
+		movimientos[1].setText("Intentos: "+intentos);
+	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource() ==  salida[0]) {
-			
-			reiniciar = true;
-			
-			/*this.removeAll();
-			this.add(new Tablero(jugador, estado));
-			this.revalidate();
-			this.repaint();*/
-		}
-		if(e.getSource() ==  salida[1]) {
-			
-			salir = true;
-			
-			/*this.removeAll();
-			this.add(new menu());
-			this.revalidate();
-			this.repaint();*/
-		}
-		
-		
-	}
-	
-	public boolean getReiniciar() {
-		return reiniciar;
-	}
-	
-	public boolean getSalir() {
-		return salir;
-	}
 }
