@@ -153,6 +153,7 @@ public class PanelInfo extends JPanel implements MouseListener{
         
 		imagen = new JLabel();
 		imagen.setIcon(icon);
+		imagen.setHorizontalAlignment(JLabel.CENTER);
 		imagen.setBounds(50, 50, 100, 100);
 		imagen.setVisible(true);
 		imagen.setOpaque(true);

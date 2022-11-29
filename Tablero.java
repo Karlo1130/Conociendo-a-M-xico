@@ -10,18 +10,24 @@ import javax.swing.*;
  * 
  * @author Mouse
  */
-public class Tablero extends JPanel implements MouseListener{
+public class Tablero extends JPanel implements MouseListener, ActionListener{
 
-    private int numPiezas = 8;
+	private String jugador;
+	private String estado;
+    private int numPiezas = 1	;
     private int piezasCorrectas = 0;
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
     mapa mexico;
+    pantallaVictoria victoria;
     
     /** 
  * COnstructor de clase
  */
-    public Tablero() {
+    public Tablero(String jugador, String estado) {
+    	
+    	this.jugador = jugador;
+    	this.estado = estado;
     	
         Dimension dt = new Dimension(1000,800);
         this.setPreferredSize(dt);
@@ -29,6 +35,13 @@ public class Tablero extends JPanel implements MouseListener{
         this.setVisible(true);
         this.setBackground(Color.white);
 
+        victoria = new pantallaVictoria(jugador, estado);
+        victoria.setBackground(Color.magenta);
+        victoria.setVisible(false);
+        victoria.salida[0].addMouseListener(this);
+        victoria.salida[1].addMouseListener(this);
+		this.add(victoria);
+        
         //Se añaden las piezas al tablero
         
         for( int i=0 ; i< numPiezas; i++)
@@ -80,9 +93,30 @@ public class Tablero extends JPanel implements MouseListener{
 			}
 		}
 		
-		if(piezasCorrectas == numPiezas)
-            		System.out.println("ganaste");
+		if(piezasCorrectas == numPiezas) {
+			victoria.setVisible(true);
+			this.revalidate();
+			this.repaint();
+		}
 		
+		if(e.getSource() ==  victoria.salida[0]) {
+			
+			//reiniciar = true;
+			
+			this.removeAll();
+			this.add(new Tablero(jugador, estado));
+			this.revalidate();
+			this.repaint();
+		}
+		if(e.getSource() ==  victoria.salida[1]) {
+			
+			//salir = true;
+			
+			this.removeAll();
+			this.add(new menu());
+			this.revalidate();
+			this.repaint();
+		}
 	}
 
 	@Override
@@ -113,6 +147,12 @@ public class Tablero extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

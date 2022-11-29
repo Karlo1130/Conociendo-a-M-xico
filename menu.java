@@ -5,8 +5,8 @@ import javax.swing.*;
 
 public class menu extends JPanel implements ActionListener{
 
-	String jugador;
-	String estado;
+	private String jugador;
+	private String estado;
 	
 	JLabel titulo;
 	JTextField nombre;
@@ -60,7 +60,6 @@ public class menu extends JPanel implements ActionListener{
 		boton.addActionListener(this);
 		this.add(boton);
 		
-		
 		setLayout(new BorderLayout());
 	}
 
@@ -89,8 +88,9 @@ public class menu extends JPanel implements ActionListener{
 		}
 		
 		if(e.getSource() ==  boton) {
+			
 			this.removeAll();
-			this.add(new Tablero());
+			this.add(new Tablero(jugador, estado));
 			this.revalidate();
 			this.repaint();
 		}
