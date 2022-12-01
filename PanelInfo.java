@@ -134,7 +134,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 		if(numImagen > numArchivos)
 			numImagen = 1;
 		
-		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".png"));
+		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".jpg"));
 		imagen.setIcon(icon);
 		derecha = false;
 	}
@@ -146,7 +146,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 			numImagen = numArchivos;
 		
 		
-		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".png"));
+		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".jpg"));
 		imagen.setIcon(icon);
 		izquierda = false;
 	}
@@ -165,7 +165,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 		this.add(verde[0]);
 		this.add(verde[1]);
 		
-		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".png"));
+		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".jpg"));
         
 		imagen = new JLabel();
 		imagen.setIcon(icon);

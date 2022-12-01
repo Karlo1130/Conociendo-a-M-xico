@@ -17,7 +17,8 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
     private Point start_drag;
     private Point start_loc;
     private Point final_location;
-    private boolean correcta = false;
+
+	private boolean correcta = false;
 
     /**
  * Constructor de clase
@@ -54,7 +55,7 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
     @Override
     public void mouseReleased(MouseEvent e) {
     	
-    	if(final_location.getX() >= 200 && final_location.getX() <= 800 &&
+    	/*if(final_location.getX() >= 200 && final_location.getX() <= 800 &&
     		final_location.getY() >= 200 && final_location.getY() <= 600) {
     		//System.out.println("Estas in");
     		this.setLocation(0, 0);
@@ -62,7 +63,7 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
     		correcta = true;
     	}
     	else
-    		correcta = false;
+    		correcta = false;*/
     }
 
     @Override
@@ -111,6 +112,10 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
         return new Point((int) (target_location.getX() + cursor.getX()),
             (int) (target_location.getY() + cursor.getY()));//se suman ambos valores para obtener la posicion de la pieza
         													//con respecto a la pantallas
+    }
+    
+    public Point getFinal_Location() {
+    	return final_location;
     }
     
     public boolean getCorrecta() {
