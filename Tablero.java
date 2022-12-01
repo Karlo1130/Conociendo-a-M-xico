@@ -20,6 +20,7 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
     PanelInfo[] info = new PanelInfo[numPiezas];
     mapa mexico;
     pantallaVictoria victoria;
+    audio[] musica = new audio[5];
     
     /** 
  * COnstructor de clase
@@ -35,6 +36,14 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
         this.setVisible(true);
         this.setBackground(Color.white);
 
+        musica[0] = new audio("Fondo");
+        musica[0].repetirSonido();
+        
+        musica[1] = new audio("Aplausos");
+		musica[2] = new audio("Colocar_Pieza");
+        musica[3] = new audio("Acierto");
+        musica[4] = new audio("Error");
+        
         victoria = new pantallaVictoria(jugador, estado);
         victoria.setBackground(Color.magenta);
         victoria.setVisible(false);
@@ -96,15 +105,22 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 		}
 		
 		if(piezasCorrectas == numPiezas) {
+			int repeticion = 0;
 			victoria.setVisible(true);
 			this.revalidate();
 			this.repaint();
+			if(repeticion == 0) {
+				musica[1].reproducirSonido();
+			}
 		}
 		
 		if(e.getSource() ==  victoria.salida[0]) {
 			
-			//reiniciar = true;
-			
+			for (int i = 0; i < musica.length; i++) {
+				if(musica[i] != null)
+					musica[i].quitarSonido();
+			}
+
 			this.removeAll();
 			this.add(new Tablero(jugador, estado));
 			this.revalidate();
@@ -112,7 +128,10 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 		}
 		if(e.getSource() ==  victoria.salida[1]) {
 			
-			//salir = true;
+			for (int i = 0; i < musica.length; i++) {
+				if(musica[i] != null)
+					musica[i].quitarSonido();
+			}
 			
 			this.removeAll();
 			this.add(new menu());
@@ -130,17 +149,19 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+        musica[2].reproducirSonido();
 		for( int i=0 ; i< numPiezas; i++)
         {
             if(piezas[i].getCorrecta()) {
             	info[i].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
             	this.remove(piezas[i]);//borra la pieza
             	this.repaint();//repinta
-            	
+                musica[3].reproducirSonido();
             }
-            else
+            else {
             	victoria.aumentarIntentos();
+                musica[4].reproducirSonido();
+            }
         }
 	}
 

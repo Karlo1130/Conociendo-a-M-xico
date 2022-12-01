@@ -10,7 +10,7 @@ public class Ejemplo {
 		// TODO Auto-generated method stub
 		
 		PrincipalView aplicacion = new PrincipalView();
-		
+
 		aplicacion.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		aplicacion.pack();
 		aplicacion.setVisible(true);

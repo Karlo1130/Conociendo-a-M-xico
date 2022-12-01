@@ -12,6 +12,7 @@ public class menu extends JPanel implements ActionListener{
 	JTextField nombre;
 	JComboBox seleccionEstado;
 	JButton boton;
+	audio musica;
 	
 	public menu() {
 		Dimension dt = new Dimension(1000,800);
@@ -19,6 +20,10 @@ public class menu extends JPanel implements ActionListener{
         this.setSize(dt);
         this.setBackground(Color.white);
         this.setVisible(true);
+        
+        //audio.repetirSonido("src/sonido/Fondo.wav");
+        musica = new audio("Fondo");
+        musica.repetirSonido();
         
         titulo = new JLabel("Conociendo a México");
         
@@ -71,8 +76,6 @@ public class menu extends JPanel implements ActionListener{
 			jugador = nombre.getText();
 			seleccionEstado.setEnabled(true);
 			seleccionEstado.showPopup();
-			
-			System.out.println(jugador);
 		}
 		
 		if(e.getSource() ==  seleccionEstado) {
@@ -81,8 +84,7 @@ public class menu extends JPanel implements ActionListener{
 				estado = (String) seleccionEstado.getSelectedItem();
 
 				boton.setVisible(true);
-				
-				System.out.println(estado);
+
 			}
 			else {
 
@@ -92,6 +94,7 @@ public class menu extends JPanel implements ActionListener{
 		
 		if(e.getSource() ==  boton) {
 			
+			musica.quitarSonido();
 			this.removeAll();
 			this.add(new Tablero(jugador, estado));
 			this.revalidate();
