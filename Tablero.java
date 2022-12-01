@@ -109,9 +109,8 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 			victoria.setVisible(true);
 			this.revalidate();
 			this.repaint();
-			if(repeticion == 0) {
-				musica[1].reproducirSonido();
-			}
+
+			musica[1].reproducirSonido();
 		}
 		
 		if(e.getSource() ==  victoria.salida[0]) {
