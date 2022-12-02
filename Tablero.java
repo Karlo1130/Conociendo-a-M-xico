@@ -14,7 +14,7 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 
 	private String jugador;
 	private String estado;
-    private int numPiezas = 32;
+    private int numPiezas = 4;
     private int piezasCorrectas = 0;
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
@@ -91,6 +91,9 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 				info[i].setCerrar(false);
 				//System.out.println(piezas[i].getFinal_Location().getX() +" - "+piezas[i].getFinal_Location().getY());
 				this.remove(info[i]);//quita la etiqueta cuando clikas en ella
+				for (int j = 0; j < numPiezas; j++) {
+					piezas[j].setVisible(true);
+				}
 				this.revalidate();//refresca la ventana
             	this.repaint();//repinta
             	piezasCorrectas++;
@@ -106,7 +109,7 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 		}
 		
 		if(piezasCorrectas == numPiezas) {
-			int repeticion = 0;
+
 			victoria.setVisible(true);
 			this.revalidate();
 			this.repaint();
@@ -150,42 +153,95 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+		for( int i=0 ; i< numPiezas; i++)
+        {
+            if(piezas[i].getCorrecta()) {
+            	
+            	int x = 0, y = 0;
+            	int x2 = 0, y2 = 0;
+            	int px = 0, py = 0;
+            	
+            	switch(i) {
+            	case 0:
+            		x = 430; x2 = 460;
+            		y = 420; y2 = 450;
+            		
+            		px = 100; py = 100;
+            		break;
+            	case 1:
+            		x = 155; x2 = 180;
+            		y = 145; y2 = 160;
+            		
+            		px = 100; py = 100;
+            		break;
+            	case 2:
+            		x = 180; x2 = 205;
+            		y = 155; y2 = 285;
+            		
+            		px = 100; py = 100;
+            		break;
+            	case 3:
+            		x = 680; x2 = 710;
+            		y = 450; y2 = 480;
+            		
+            		px = 100; py = 100;
+            		break;
+            	}
+            	
+            	if (piezas[i].getFinal_Location().getX() > x && piezas[i].getFinal_Location().getX() < x2 &&
+    				piezas[i].getFinal_Location().getY() > y && piezas[i].getFinal_Location().getY() < y2) {
+            			//this.remove(piezas[i]);//borra la pieza
+            			piezas[i].quitarMovimiento();
+            			
+            			for (int j = 0; j < numPiezas; j++) {
+        					piezas[j].setVisible(false);
+        				}
+            			
+            			info[i].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
+
+            			piezas[i].setLocation(px, py);
+            			
+            			musica[2].reproducirSonido();
+            			musica[3].reproducirSonido();
+            	}
+            	else {
+            		victoria.aumentarIntentos();
+                    musica[4].reproducirSonido();
+            	}
+            }
+        }
+		/*
 			if (piezas[0].getFinal_Location().getX() > 430 && piezas[0].getFinal_Location().getX() < 460 &&
 					piezas[0].getFinal_Location().getY() > 420 && piezas[0].getFinal_Location().getY() < 450) {
 				System.out.println(piezas[0].getFinal_Location().getX() +" - "+piezas[0].getFinal_Location().getY());
 		            	info[0].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
 		            	this.remove(piezas[0]);//borra la pieza
-		            	this.repaint();//repinta
-					}else {          	
-						victoria.aumentarIntentos();
-					}
-				if (piezas[1].getFinal_Location().getX() > 155 && piezas[1].getFinal_Location().getX() < 180 &&
+			}
+		    else if (piezas[1].getFinal_Location().getX() > 155 && piezas[1].getFinal_Location().getX() < 180 &&
 					piezas[1].getFinal_Location().getY() > 145 && piezas[1].getFinal_Location().getY() < 160) {
 					System.out.println(piezas[1].getFinal_Location().getX() +" - "+piezas[1].getFinal_Location().getY());
 		            	info[1].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
 		            	this.remove(piezas[1]);//borra la pieza
 		            	this.repaint();//repinta
-					}else {          	
-						victoria.aumentarIntentos();
-					}
-				if (piezas[2].getFinal_Location().getX() > 180 && piezas[2].getFinal_Location().getX() < 205 &&
+			}
+		    else if (piezas[2].getFinal_Location().getX() > 180 && piezas[2].getFinal_Location().getX() < 205 &&
 					piezas[2].getFinal_Location().getY() > 155 && piezas[2].getFinal_Location().getY() < 285) {
 					System.out.println(piezas[2].getFinal_Location().getX() +" - "+piezas[2].getFinal_Location().getY());
 			            	info[2].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
 			            	this.remove(piezas[2]);//borra la pieza
 			            	this.repaint();//repinta
-						}else {          	
-							victoria.aumentarIntentos();
-						}
-				if (piezas[3].getFinal_Location().getX() > 680 && piezas[3].getFinal_Location().getX() < 710 &&
+			}
+		    else if (piezas[3].getFinal_Location().getX() > 680 && piezas[3].getFinal_Location().getX() < 710 &&
 						piezas[3].getFinal_Location().getY() > 450 && piezas[3].getFinal_Location().getY() < 480) {
 						System.out.println(piezas[3].getFinal_Location().getX() +" - "+piezas[3].getFinal_Location().getY());
 			            	info[3].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
 			            	this.remove(piezas[3]);//borra la pieza
 			            	this.repaint();//repinta
-						}else {          	
-							victoria.aumentarIntentos();
-						}
+			}
+		    else
+		    	victoria.aumentarIntentos();
+			
+			/*
 				if (piezas[4].getFinal_Location().getX() > 645 && piezas[4].getFinal_Location().getX() < 670 &&
 						piezas[4].getFinal_Location().getY() > 530 && piezas[4].getFinal_Location().getY() < 555) {
 						System.out.println(piezas[4].getFinal_Location().getX() +" - "+piezas[4].getFinal_Location().getY());
@@ -361,8 +417,8 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 				
 				//           TIENE UN ERROR QUE AÚN NO ENCUENTRO D:
 				//           TIENE UN ERROR QUE AÚN NO ENCUENTRO D:
-				if (piezas[23].getFinal_Location().getX() > 0 && piezas[23].getFinal_Location().getX() < 1000 &&
-						piezas[23].getFinal_Location().getY() > 0 && piezas[23].getFinal_Location().getY() < 1000) {
+				if (piezas[23].getFinal_Location().getX() > 0 && piezas[23].getFinal_Location().getX() < 500 &&
+						piezas[23].getFinal_Location().getY() > 0 && piezas[23].getFinal_Location().getY() < 500) {
 						System.out.println(piezas[23].getFinal_Location().getX() +" - "+piezas[23].getFinal_Location().getY());
 			            	info[23].setVisible(true);//muestra la etiqueta cuando la pieza esta en posicion
 			            	this.remove(piezas[23]);//borra la pieza
@@ -370,10 +426,6 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 						}else {          	
 							victoria.aumentarIntentos();
 						}
-				//           TIENE UN ERROR QUE AÚN NO ENCUENTRO D:
-				//           TIENE UN ERROR QUE AÚN NO ENCUENTRO D:
-				
-				
 				
 				if (piezas[24].getFinal_Location().getX() > 300 && piezas[24].getFinal_Location().getX() < 315 &&
 						piezas[24].getFinal_Location().getY() > 305 && piezas[24].getFinal_Location().getY() < 315) {
@@ -446,13 +498,8 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 			            	this.repaint();//repinta
 						}else {          	
 							victoria.aumentarIntentos();
-						}
+						}*/
 				
-				
-				
-				for( int i=0 ; i< numPiezas; i++)
-				{
-        }
 	}
 
 	@Override

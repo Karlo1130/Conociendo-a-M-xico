@@ -9,7 +9,7 @@ public class pantallaVictoria extends JPanel{
 	private String estado;
 	
 	private int aciertos=0;
-	private int intentos=0;
+	int intentos=0;
 	
 	private boolean reiniciar=false;
 	private boolean salir=false;

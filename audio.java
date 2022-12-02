@@ -29,7 +29,7 @@ public class audio{
 	}
 	
 	public void reproducirSonido(){
-		
+		clip.setFramePosition(0);
 		clip.start();
 		
 	}
@@ -43,5 +43,9 @@ public class audio{
 	public void quitarSonido(){
 		clip.stop();
 		clip.close();
+	}
+	
+	public void volverInicio() {
+		clip.setFramePosition(0);
 	}
 }

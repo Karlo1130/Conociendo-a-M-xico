@@ -55,15 +55,15 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
     @Override
     public void mouseReleased(MouseEvent e) {
     	
-    	/*if(final_location.getX() >= 200 && final_location.getX() <= 800 &&
-    		final_location.getY() >= 200 && final_location.getY() <= 600) {
-    		//System.out.println("Estas in");
-    		this.setLocation(0, 0);
-    		//this.add(new PanelInfo()).setBackground(Color.blue);
+    	if(final_location.getX() >= 100 && final_location.getX() <= 800 &&
+    		final_location.getY() >= 100 && final_location.getY() <= 600) {
+    		
+
+    		
     		correcta = true;
     	}
     	else
-    		correcta = false;*/
+    		correcta = false;
     }
 
     @Override
@@ -120,6 +120,17 @@ public class Pieza extends JLabel implements MouseListener, MouseMotionListener{
     
     public boolean getCorrecta() {
     	return correcta;
+    }
+    
+    
+    public void quitarMovimiento(){
+    	this.removeMouseListener(this);
+    	this.removeMouseMotionListener(this);
+    	correcta = false;
+    }
+    
+    public void enPosicion(int x, int y) {
+    	this.setLocation(x, y);
     }
     
 }//--> end class
