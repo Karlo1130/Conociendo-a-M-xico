@@ -14,7 +14,7 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
 
 	private String jugador;
 	private String estado;
-    private int numPiezas = 4;
+    private int numPiezas = 32;
     private int piezasCorrectas = 0;
     Pieza [] piezas = new Pieza[numPiezas];   
     PanelInfo[] info = new PanelInfo[numPiezas];
@@ -166,25 +166,193 @@ public class Tablero extends JPanel implements MouseListener, ActionListener{
             		x = 430; x2 = 460;
             		y = 420; y2 = 450;
             		
-            		px = 100; py = 100;
+            		px = 442; py = 435;
             		break;
             	case 1:
             		x = 155; x2 = 180;
             		y = 145; y2 = 160;
             		
-            		px = 100; py = 100;
+            		px = 167; py = 147;
             		break;
             	case 2:
             		x = 180; x2 = 205;
             		y = 155; y2 = 285;
             		
-            		px = 100; py = 100;
+            		px = 191; py = 270;
             		break;
             	case 3:
             		x = 680; x2 = 710;
             		y = 450; y2 = 480;
             		
-            		px = 100; py = 100;
+            		px = 694; py = 464;
+            		break;
+            	case 4:
+            		x = 650; x2 = 665;
+            		y = 535; y2 = 550;
+            		
+            		px = 657; py = 543;
+            		break;
+            	case 5:
+            		x = 315; x2 = 325;
+            		y = 180; y2 = 195;
+            		
+            		px = 320; py = 187;
+            		break;
+            	case 6:
+            		x = 525; x2 = 535;
+            		y = 505; y2 = 515;
+            		
+            		px = 529; py = 509;
+            		break;
+            	case 7:
+            		x = 420; x2 = 430;
+            		y = 235; y2 = 245;
+            		
+            		px = 425; py = 241;
+            		break;
+            	case 8:
+            		x = 395; x2 = 405;
+            		y = 505; y2 = 520;
+            		
+            		px = 399; py = 512;
+            		break;
+            	case 9:
+            		x = 350; x2 = 360;
+            		y = 310; y2 = 325;
+            		
+            		px = 354; py = 317;
+            		break;
+            	case 10:
+            		x = 495; x2 = 505;
+            		y = 480; y2 = 490;
+            		
+            		px = 499; py = 486;
+            		break;
+            	case 11:
+            		x = 455; x2 = 470;
+            		y = 445; y2 = 455;
+            		
+            		px = 463; py = 451;
+            		break;
+            	case 12:
+            		x = 455; x2 = 465;
+            		y = 525; y2 = 535;
+            		
+            		px = 460; py = 529;
+            		break;
+            	case 13:
+            		x = 510; x2 = 520;
+            		y = 445; y2 = 455;
+            		
+            		px = 514; py = 451;
+            		break;
+            	case 14:
+            		x = 370; x2 = 380;
+            		y = 415; y2 = 430;
+            		
+            		px = 377; py = 422;
+            		break;
+            	case 15:
+            		x = 420; x2 = 430;
+            		y = 480; y2 = 495;
+            		
+            		px = 426; py = 488;
+            		break;
+            	case 16:
+            		x = 520; x2 = 530;
+            		y = 515; y2 = 525;
+            		
+            		px = 525; py = 521;
+            		break;
+            	case 17:
+            		x = 375; x2 = 385;
+            		y = 410; y2 = 425;
+            		
+            		px = 380; py = 417;
+            		break;
+            	case 18:
+            		x = 475; x2 = 485;
+            		y = 285; y2 = 295;
+            		
+            		px = 481; py = 290;
+            		break;
+            	case 19:
+            		x = 545; x2 = 560;
+            		y = 525; y2 = 535;
+            		
+            		px = 552; py = 531;
+            		break;
+            	case 20:
+            		x = 530; x2 = 540;
+            		y = 465; y2 = 480;
+            		
+            		px = 536; py = 472;
+            		break;
+            	case 21:
+            		x = 495; x2 = 505;
+            		y = 450; y2 = 460;
+            		
+            		px = 500; py = 454;
+            		break;
+            	case 22:
+            		x = 765; x2 = 780;
+            		y = 425; y2 = 435;
+            		
+            		px = 772; py = 431;
+            		break;
+            	case 23:
+            		x = 455; x2 = 465;
+            		y = 375; y2 = 385;
+            		
+            		px = 460; py = 381;
+            		break;
+            	case 24:
+            		x = 300; x2 = 315;
+            		y = 305; y2 = 315;
+            		
+            		px = 308; py = 311;
+            		break;
+            	case 25:
+            		x = 200; x2 = 210;
+            		y = 150; y2 = 160;
+            		
+            		px = 205; py = 154;
+            		break;
+            	case 26:
+            		x = 650; x2 = 660;
+            		y = 520; y2 = 530;
+            		
+            		px = 654; py = 524;
+            		break;
+            	case 27:
+            		x = 500; x2 = 515;
+            		y = 290; y2 = 300;
+            		
+            		px = 507; py = 296;
+            		break;
+            	case 28:
+            		x = 540; x2 = 550;
+            		y = 495; y2 = 510;
+            		
+            		px = 545; py = 503;
+            		break;
+            	case 29:
+            		x = 540; x2 = 550;
+            		y = 435; y2 = 445;
+            		
+            		px = 546; py = 439;
+            		break;
+            	case 30:
+            		x = 730; x2 = 745;
+            		y = 425; y2 = 440;
+            		
+            		px = 737; py = 433;
+            		break;
+            	case 31:
+            		x = 410; x2 = 420;
+            		y = 355; y2 = 365;
+            		
+            		px = 415; py = 361;
             		break;
             	}
             	
