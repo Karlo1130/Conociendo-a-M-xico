@@ -29,7 +29,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 
 		this.numPanel = numPanel;
 		
-		this.setBounds(400, 300, 200, 200);
+		this.setBounds(150, 0, 700, 800);
 		this.setBackground(Color.black);
 		this.setOpaque(true);
 		this.setVisible(false);
@@ -37,27 +37,30 @@ public class PanelInfo extends JPanel implements MouseListener{
 		this.addMouseListener(this);//agrega un listener
 		
 		rojo = new JLabel();
-		rojo.setBounds(150, 0, 50, 50);
+		rojo.setBounds(650, 0, 50, 50);
 		rojo.setBackground(Color.red);
 		rojo.setOpaque(true);
 		
 		this.add(rojo);
 		
 		nomEstado = new JLabel(""+numPanel);
-		nomEstado.setBounds(50, 0, 100, 50);
+		nomEstado.setBounds(50, 0, 600, 50);
 		nomEstado.setBackground(Color.pink);
 		nomEstado.setOpaque(true);
 		
 		this.add(nomEstado);
+		panelesImagen();
 
-		info = new JLabel("aqui va informacion jeje");
-		info.setBounds(50, 150, 100, 50);
+		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numArchivos+".jpg"));
+		info = new JLabel();
+		info.setBounds(50, 500, 600, 550);
+		info.setIcon(icon);
 		info.setBackground(Color.orange);
 		info.setOpaque(true);
+		info.setVisible(true);
+		
 		
 		this.add(info);
-		
-		panelesImagen();
 		
 		setLayout(new BorderLayout());
 	}
@@ -74,16 +77,16 @@ public class PanelInfo extends JPanel implements MouseListener{
 		
 		cursorLocation = getCursorLocation(e);
 		
-		if(cursorLocation.getX() >= 150 && cursorLocation.getX() <= 200 &&
+		if(cursorLocation.getX() >= 650 && cursorLocation.getX() <= 700 &&
 				cursorLocation.getY() >= 0 && cursorLocation.getY() <= 50) {
 			cerrar=true;//cambia el estado cuando se presiona
 		}//Boton cerrar "X"
-		if(cursorLocation.getX() >= 150 && cursorLocation.getX() <= 200 &&
-				cursorLocation.getY() > 50 && cursorLocation.getY() <= 150) {
+		if(cursorLocation.getX() >= 650 && cursorLocation.getX() <= 700 &&
+				cursorLocation.getY() > 50 && cursorLocation.getY() <= 750) {
 			derecha=true;//cambia el estado cuando se presiona
 		}//Boton derecho
 		if(cursorLocation.getX() >= 0 && cursorLocation.getX() <= 50 &&
-				cursorLocation.getY() > 50 && cursorLocation.getY() <= 150) {
+				cursorLocation.getY() > 50 && cursorLocation.getY() <= 750) {
 			izquierda=true;//cambia el estado cuando se presiona
 		}//Boton izquierdo
 		
@@ -131,7 +134,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 	public void aumentarDerecha() {
 		numImagen++;
 		
-		if(numImagen > numArchivos)
+		if(numImagen > numArchivos-1)
 			numImagen = 1;
 		
 		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".jpg"));
@@ -143,7 +146,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 		numImagen--;
 		
 		if(numImagen < 1)
-			numImagen = numArchivos;
+			numImagen = numArchivos-1;
 		
 		
 		ImageIcon icon = new ImageIcon( getClass().getResource(numPanel+"/"+numImagen+".jpg"));
@@ -153,12 +156,12 @@ public class PanelInfo extends JPanel implements MouseListener{
 	
 	public void panelesImagen() {
 		verde[0] = new JLabel(">");
-		verde[0].setBounds(150, 50, 50, 100);
+		verde[0].setBounds(650, 50, 50, 750);
 		verde[0].setBackground(Color.green);
 		verde[0].setOpaque(true);
 		
 		verde[1] = new JLabel("<");
-		verde[1].setBounds(0, 50, 50, 100);
+		verde[1].setBounds(0, 50, 50, 750);
 		verde[1].setBackground(Color.green);
 		verde[1].setOpaque(true);
 		
@@ -170,7 +173,7 @@ public class PanelInfo extends JPanel implements MouseListener{
 		imagen = new JLabel();
 		imagen.setIcon(icon);
 		imagen.setHorizontalAlignment(JLabel.CENTER);
-		imagen.setBounds(50, 50, 100, 100);
+		imagen.setBounds(50, 50, 600, 500);
 		imagen.setVisible(true);
 		imagen.setOpaque(true);
 		this.add(imagen);
