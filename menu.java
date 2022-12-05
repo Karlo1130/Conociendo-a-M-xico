@@ -9,12 +9,14 @@ public class menu extends JPanel implements ActionListener{
 	private String estado;
 	
 	JLabel titulo;
+	JLabel fondo;
 	JTextField nombre;
 	JComboBox seleccionEstado;
 	JButton boton;
 	audio musica;
 	
 	public menu() {
+		
 		Dimension dt = new Dimension(1000,800);
         this.setPreferredSize(dt);
         this.setSize(dt);
@@ -25,7 +27,19 @@ public class menu extends JPanel implements ActionListener{
         musica = new audio("Fondo");
         musica.repetirSonido();
         
+        
+        ImageIcon iconFondo = new ImageIcon( getClass().getResource("img/hola.png"));
+        
+        fondo = new JLabel ();
+        fondo.setBounds(0,0,1000,800);
+        fondo.setIcon(iconFondo);
+        fondo.setOpaque(true);
+        
+        this.add(fondo);
+        
         titulo = new JLabel("Conociendo a México");
+        
+        //this.add
         
         ImageIcon icon = new ImageIcon( getClass().getResource("img/blue.png"));
         titulo.setIcon(icon);
@@ -45,12 +59,40 @@ public class menu extends JPanel implements ActionListener{
 		this.add(nombre);
 
 		String[] estados = {"Selecciona tu estado",
-				"Baja California Sur",
+				"Aguascalientes",
 				"Baja California",
-				"Chihuahua"};
+				"Baja California Sur",
+				"Campeche",
+				"Chiapas",
+				"Chihuahua",
+				"Cuidad de méxico",
+				"Coahuila",
+				"Colima",
+				"Durango",
+				"Guanajuato",
+				"Guerrero",
+				"Hidalgo",
+				"Jalisco",
+				"Michoacán",
+				"Morelos",
+				"Nayarit",
+				"Nuevo León",
+				"Oaxaca",
+				"Puebla",
+				"Querétaro",
+				"Quintana Roo",
+				"San Luis Potosí",
+				"Sinaloa",
+				"Sonora",
+				"Tabasco",
+				"Tamaulipas",
+				"Tlaxcala",
+				"Veracruz",
+				"Yucatán",
+				"Zacatecas"};
 		
 		seleccionEstado = new JComboBox(estados);
-		seleccionEstado.setBounds(200, 400, 600, 56);
+		seleccionEstado.setBounds(200, 650, 600, 56);
 		seleccionEstado.setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
 		seleccionEstado.setMaximumRowCount(6);
 		seleccionEstado.setEnabled(false);
