@@ -36,9 +36,11 @@ public class PanelInfo extends JPanel implements MouseListener{
 		
 		this.addMouseListener(this);//agrega un listener
 		
+		ImageIcon iconSalir = new ImageIcon( getClass().getResource("img/salir.png"));
 		rojo = new JLabel();
 		rojo.setBounds(650, 0, 50, 50);
-		rojo.setBackground(Color.red);
+		rojo.setIcon(iconSalir);
+		rojo.setBackground(Color.black);
 		rojo.setOpaque(true);
 		
 		this.add(rojo);
@@ -155,14 +157,18 @@ public class PanelInfo extends JPanel implements MouseListener{
 	}
 	
 	public void panelesImagen() {
-		verde[0] = new JLabel(">");
+		ImageIcon iconDer = new ImageIcon( getClass().getResource("img/derecha.png"));
+		verde[0] = new JLabel();
 		verde[0].setBounds(650, 50, 50, 750);
-		verde[0].setBackground(Color.green);
+		verde[0].setIcon(iconDer);
+		verde[0].setBackground(Color.pink);
 		verde[0].setOpaque(true);
 		
-		verde[1] = new JLabel("<");
+		ImageIcon iconIzq = new ImageIcon( getClass().getResource("img/izquierda.png"));
+		verde[1] = new JLabel();
 		verde[1].setBounds(0, 50, 50, 750);
-		verde[1].setBackground(Color.green);
+		verde[1].setIcon(iconIzq);
+		verde[1].setBackground(Color.pink);
 		verde[1].setOpaque(true);
 		
 		this.add(verde[0]);
