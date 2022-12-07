@@ -28,28 +28,18 @@ public class menu extends JPanel implements ActionListener{
         musica.repetirSonido();
         
         
-        ImageIcon iconFondo = new ImageIcon( getClass().getResource("img/hola.png"));
+        /*ImageIcon iconFondo = new ImageIcon( getClass().getResource("img/hola.png"));
         
         fondo = new JLabel ();
         fondo.setBounds(0,0,1000,800);
         fondo.setIcon(iconFondo);
         fondo.setOpaque(true);
         
-        this.add(fondo);
+        this.add(fondo);*/
         
-        titulo = new JLabel("Conociendo a México");
+        titulo = new JLabel();
         
         //this.add
-        
-        ImageIcon icon = new ImageIcon( getClass().getResource("img/blue.png"));
-        titulo.setIcon(icon);
-        
-		titulo.setBounds(200, 50, icon.getIconWidth(), icon.getIconHeight());
-		titulo.setBackground(Color.red);
-		titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 56));
-		titulo.setHorizontalTextPosition(JLabel.CENTER);
-		titulo.setOpaque(true);
-		this.add(titulo);
 		
 		nombre = new JTextField();
 		nombre.setBounds(200, 300, 600, 56);
@@ -92,7 +82,7 @@ public class menu extends JPanel implements ActionListener{
 				"Zacatecas"};
 		
 		seleccionEstado = new JComboBox(estados);
-		seleccionEstado.setBounds(200, 650, 600, 56);
+		seleccionEstado.setBounds(200, 380, 600, 56);
 		seleccionEstado.setFont(new Font("Comic Sans MS", Font.PLAIN, 32));
 		seleccionEstado.setMaximumRowCount(6);
 		seleccionEstado.setEnabled(false);
@@ -108,6 +98,16 @@ public class menu extends JPanel implements ActionListener{
 		this.add(boton);
 		
 		setLayout(new BorderLayout());
+		
+		ImageIcon icon = new ImageIcon( getClass().getResource("img/hola.png"));
+        titulo.setIcon(icon);
+        
+		titulo.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+		titulo.setBackground(Color.red);
+		titulo.setFont(new Font("Comic Sans MS", Font.PLAIN, 56));
+		titulo.setHorizontalTextPosition(JLabel.CENTER);
+		titulo.setOpaque(true);
+		this.add(titulo);
 	}
 
 	@Override
